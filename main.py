@@ -96,8 +96,7 @@ while True:
 
     elif number == 5:
         print(f"""Программа завершена.
-               Кол-во операций: {count}""")
-        break  
+               Кол-во операций: {count}""") 
 
     else:
         print("Такого номера нет.")
