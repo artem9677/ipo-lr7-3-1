@@ -52,23 +52,31 @@ while True:
             print("Запись не найдена.")
  
     elif number == 3:
+        flag = True
         name = input("Введите название: ")  
         latin_name = input("Введите латинское название: ")  
         is_salt_water_fish = input("Введите, пресноводная ли рыба (да/нет): ")  
-        sub_type_count = int(input("Введите кол-во подвидов: "))
+        sub_type_count = input("Введите кол-во подвидов: ")
+        try:
+            sub_type_count = int(sub_type_count)
+        except:
+            flag = False
+        if(not flag):
+            print("Значение введено неверно.")
+            break
+        else:
+            new_fish = {
+                'id': num,
+                'name': name,
+                'latin_name': latin_name,
+                'is_salt_water_fish': True if is_salt_water_fish.lower() == 'да' else False, 
+                'sub_type_count': sub_type_count
+            }
 
-        new_fish = {
-            'id': num,
-            'name': name,
-            'latin_name': latin_name,
-            'is_salt_water_fish': True if is_salt_water_fish.lower() == 'да' else False, 
-            'sub_type_count': sub_type_count
-        }
-
-        data.append(new_fish) 
-        with open("fish.json", 'w', encoding='utf-8') as out_file: 
-            json.dump(data, out_file)
-        print("Рыба успешно добавлена.")
+            data.append(new_fish) 
+            with open("fish.json", 'w', encoding='utf-8') as out_file: 
+                json.dump(data, out_file)
+            print("Рыба успешно добавлена.")
         count += 1
         num+=1
 
