@@ -4,8 +4,12 @@ with open("fish.json", 'r', encoding='utf-8') as file:
     data = json.load(file) 
 
 count = 0 
+num = 0
 
-num = 6;
+for fish in data:
+    num+=1
+
+num+=1
 
 while True:
     print("""
@@ -64,9 +68,9 @@ while True:
         data.append(new_fish) 
         with open("fish.json", 'w', encoding='utf-8') as out_file: 
             json.dump(data, out_file)
-        print("Машина успешно добавлена.")
-    count += 1
-    num+=1
+        print("Рыба успешно добавлена.")
+        count += 1
+        num+=1
 
     elif number == 4:
         id = int(input("Введите номер рыбы: "))
